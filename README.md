@@ -1,82 +1,100 @@
-## CMOS NAND Gate Simulation using KiCad and ngspice
+CMOS NAND Gate Simulation using KiCad and ngspice
+Overview
 
-####Overview:
-This project demonstrates the design and transient simulation of a CMOS NAND gate using discrete NMOS and PMOS transistors in KiCad 9.The goal was to understand CMOS logic operation at the device level and verify the NAND truth table using time-domain analysis.
+This project demonstrates the design and transient simulation of a CMOS NAND gate using discrete NMOS and PMOS transistors in KiCad 9.
+The goal is to understand CMOS logic operation at the device level and verify the NAND truth table using time-domain (transient) analysis.
 
----
+Objective
 
-####Objective:-
- -Design a CMOS NAND gate using PMOS pull-up and NMOS pull-down networks
- -Apply pulse inputs to generate all logic combinations
- -Verify NAND logic behavior through transient simulation
+Design a CMOS NAND gate using PMOS pull-up and NMOS pull-down networks
 
----
+Apply pulse inputs to generate all logic combinations
 
-####Tools used:
- -KiCad 9(Schematic + Simulation)
- -Generic NMOS / PMOS SPICE models
+Verify NAND logic behavior through transient simulation
 
----
+Tools Used
 
-####Circuit description:
- -Two PMOS transistors in parallel connected to VDD (pull-up network)
- -Two NMOS transistors in series connected to GND (pull-down network)
- -Output taken at the common node between pull-up and pull-down networks
+KiCad 9 (Schematic capture + ngspice simulation)
 
----
+Generic NMOS / PMOS SPICE models
 
-####Steps during simulation setup
+Circuit Description
 
-Supply
-VDD = 5 V (DC source)
+Two PMOS transistors connected in parallel to VDD (pull-up network)
 
-2) Input Source
-Two independent PULSE voltage sources were used with different delays
- to generate all four input combinations (00, 01, 10, 11).
+Two NMOS transistors connected in series to GND (pull-down network)
 
-3) Making the Circuit 
+Output taken at the common node between pull-up and pull-down networks
 
-4) Generating the Simulations from the working of the circuit.
+Simulation Setup
+1. Power Supply
 
+VDD = 5 V (DC voltage source)
 
-####Results
-- Output goes LOW only when both inputs are HIGH
-- Output remains HIGH for all other input combinations
-- NAND truth table behavior verified through transient waveform
+2. Input Sources
 
-| A | B | Output |
-|---|---|--------|
-| 0 | 0 | 1 |
-| 0 | 1 | 1 |
-| 1 | 0 | 1 |
-| 1 | 1 | 0 |
+Two independent PULSE voltage sources
 
+Different delays were used to generate all four logic combinations:
+00, 01, 10, 11
 
-####Issues faced
--SPICE netlist errors due to rescued symbols and incorrect model paths
--Incorrect pulse timing causing only extreme logic states
+3. Circuit Implementation
 
-These were resolved by:
-- Replacing rescued symbols with proper SPICE-compatible symbols
-- Adding correct simulation directives
-- Phase-shifting pulse input
+CMOS NAND gate constructed using discrete PMOS and NMOS devices
 
----
+Output optionally loaded with a simple RC network for observation
 
-####Limitations
-- Idealized transistor models
-- No layout or parasitic extraction
-- No noise margin or delay analysis
-- Educational / learning-focused project
+4. Simulation
 
----
+Transient analysis used to observe time-domain behavior
 
-####Learnings
-- CMOS logic operation at transistor level
-- Importance of timing in transient simulations
-- KiCad simulation workflow and pitfalls
+Waveforms plotted to verify logical correctness
 
----
+Results
 
-## Author
+Output goes LOW only when both inputs are HIGH
+
+Output remains HIGH for all other input combinations
+
+NAND truth table behavior verified through transient waveforms
+
+A	B	Output
+0	0	1
+0	1	1
+1	0	1
+1	1	0
+Issues Faced
+
+SPICE netlist errors due to rescued symbols and incorrect model paths
+
+Incorrect pulse timing caused only extreme logic states to appear
+
+Resolutions
+
+Replaced rescued symbols with proper SPICE-compatible symbols
+
+Added correct simulation directives
+
+Phase-shifted pulse input sources to generate all logic combinations
+
+Limitations
+
+Idealized transistor models
+
+No PCB layout or parasitic extraction
+
+No noise margin or delay analysis
+
+Educational / learning-focused project
+
+Learnings
+
+CMOS logic operation at the transistor level
+
+Importance of timing in transient simulations
+
+KiCad + ngspice simulation workflow and common pitfalls
+
+Author
+
 Jay Bauti
